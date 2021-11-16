@@ -1,0 +1,28 @@
+name: Deploy
+on:
+  push:
+    branches: main
+jobs:
+  deploy:
+    name: Deploy to CF Worker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: Publish
+        run: npx wrangler publish
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
