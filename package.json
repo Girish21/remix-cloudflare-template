@@ -8,7 +8,7 @@
     "build:remix": "remix build",
     "build:styles": "cross-env NODE_ENV=production tailwindcss -o ./app/styles/tailwind.css --minify",
     "build:worker": "cross-env NODE_ENV=production node ./scripts/build.mjs",
-    "build": "npm run build:styles && npm run build:remix",
+    "build": "npm run build:styles && npm run build:remix && npm run build:worker",
     "deploy": "npm run build && wrangler publish",
     "dev:remix": "remix watch",
     "dev:miniflare": "miniflare --build-command \"node ./scripts/build.mjs\" --watch",
