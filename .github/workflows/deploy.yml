@@ -12,10 +12,12 @@ jobs:
         uses: styfle/cancel-workflow-action@0.6.0
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 14
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -24,8 +26,10 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-npm-
             ${{ runner.OS }}-
+
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Download deps
         uses: bahmutov/npm-install@v1
 

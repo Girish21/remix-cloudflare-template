@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^2.2.2",
+    "@cloudflare/wrangler": "^1.19.5",
     "@remix-run/dev": "^0.20.1",
     "@testing-library/cypress": "^8.0.2",
     "@types/react": "^17.0.24",
