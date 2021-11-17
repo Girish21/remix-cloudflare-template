@@ -1,31 +1,59 @@
-# Welcome to Remix!
+# remix-cf-template
+
+> **based on Remix V0.21**
 
 - [Remix Docs](https://docs.remix.run)
-- [Customer Dashboard](https://remix.run/dashboard)
+
+## Preconfiguration
+
+- Tailwind
+
+- Prettier
+
+- Cypress
+
+- Workflow to publish using `wrangler` to cf worker
+
+## Node
+
+Wrangler expects atleast Node version of >=16.7. The required node version is managed using `nvm` inside the `.nvmrc` file
 
 ## Development
 
-You will be running two processes during development when using Vercel as your server.
-
-- Your Miniflare server in one (miniflare is a local environment for Cloudflare Workers)
-- The Remix development server in another
-
 ```sh
-# in one tab (starts remix dev server)
-$ npm run dev
-
-# in another (starts miniflare server)
-$ npm start
+npm run dev
 ```
 
-Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
-
-If you'd rather run everything in a single tab, you can look at [concurrently](https://npm.im/concurrently) or similar tools to run both processes in one tab.
+this will start the Tailwind, Remix and Wrangler servers in `watch` mode
 
 ## Deployment
 
-Use wrangler to build and deploy your application to Cloudflare Workers:
+- First login to your cloudflare account using the [Wrangler CLI](https://developers.cloudflare.com/workers/cli-wrangler/install-update).
+
+- Update the project name inside [wrangler.toml](https://github.com/Girish21/remix-cloudflare-template/blob/main/wrangler.toml)
+
+- Preview the app using `wrangler preview`
 
 ```sh
-npm run deploy
+npx wrangler preview
 ```
+
+- Then run `wrangler publish` to publish the app to the wrokers
+
+```sh
+npx wrangler publish
+```
+
+## CI/CD
+
+This template comes with a basic workflow included to build and pusblish to the wrokers.
+
+For this to work setup the CI environment by adding
+
+- CF_API_TOKEN
+
+- CF_ACCOUNT_ID
+
+to the projects secrects.
+
+These values could be found / created on your Cloudflare Dashboard.
