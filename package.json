@@ -9,11 +9,10 @@
     "build:styles": "cross-env NODE_ENV=production tailwindcss -o ./app/styles/tailwind.css --minify",
     "build:worker": "cross-env NODE_ENV=production node ./scripts/build.mjs",
     "build": "npm run build:styles && npm run build:remix && npm run build:worker",
-    "deploy": "npm run build && wrangler publish",
     "dev:remix": "remix watch",
     "dev:miniflare": "miniflare --build-command \"node ./scripts/build.mjs\" --watch",
     "dev:styles": "tailwindcss -o ./app/styles/tailwind.css --watch",
-    "dev": "npm run cleanup && concurrently \"npm:dev:*\"",
+    "dev": "npm run cleanup && concurrently --restart-tries 5 \"npm:dev:*\"",
     "postinstall": "remix setup cloudflare-workers",
     "prebuild": "npm run cleanup",
     "start": "miniflare --watch",
@@ -40,7 +39,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^9.0.0",
     "esbuild": "^0.13.0",
-    "miniflare": "^1.4.1",
+    "miniflare": "2.0.0-next.3",
     "postcss": "^8.3.11",
     "postcss-cli": "^9.0.2",
     "rimraf": "^3.0.2",
@@ -50,7 +49,7 @@
     "typescript": "^4.4.4"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16.7"
   },
   "sideEffects": false,
   "main": "dist/worker.js"
