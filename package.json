@@ -20,17 +20,17 @@
     "test": "start-server-and-test miniflare http-get://localhost:8787 test:cypress"
   },
   "dependencies": {
-    "@remix-run/cloudflare-workers": "^0.20.1",
-    "@remix-run/react": "^0.20.1",
+    "@remix-run/cloudflare-workers": "^1.0.6",
+    "@remix-run/react": "^1.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^6.0.0-beta.8",
-    "remix": "^0.20.1"
+    "remix": "^1.0.6",
+    "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^2.2.2",
     "@cloudflare/wrangler": "^1.19.5",
-    "@remix-run/dev": "^0.20.1",
+    "@remix-run/dev": "^1.0.6",
     "@testing-library/cypress": "^8.0.2",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
